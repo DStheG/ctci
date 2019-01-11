@@ -4,25 +4,22 @@
   Implement an algorithm to determine if a string has all unique characters.
   What if you cannot use additional data structures?
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-import random
 import string
 import sys
 
 sys.path.append("../")
 
-from module.ctci import Exercise
-from module.ctci import Solution
-from module.sort import quick_sort
-from module.sort import merge_sort
+from module.ctci  import Exercise
+from module.ctci  import Solution
+from module.sort  import quick_sort
+from module.sort  import merge_sort
+from module.str   import string_gen
 
 CHARS_SET = string.printable
 
-def string_gen(size=10, chars=CHARS_SET):
-  return ''.join(random.choice(chars) for _ in range(size))
-
 class Ex_01_01(Exercise):
   def setup(self):
-    self.param.append(string_gen())
+    self.param.append(string_gen(chars=CHARS_SET))
 
 class Ex0101(Solution):
   # O(N*N)
