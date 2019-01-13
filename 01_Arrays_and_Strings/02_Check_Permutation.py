@@ -1,8 +1,8 @@
 #!/usr/bin/python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-1.1 Is Unique
-  Implement an algorithm to determine if a string has all unique characters.
-  What if you cannot use additional data structures?
+1.2 Check Permutation
+  Given two strings, Write a method to decide if on is a permutation of the
+  other.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 import string
 import random
