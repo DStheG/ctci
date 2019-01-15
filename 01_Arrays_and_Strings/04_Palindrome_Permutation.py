@@ -1,6 +1,6 @@
 #!/usr/bin/python
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-1.3 Palindrome Permutation
+1.4 Palindrome Permutation
   Given a string, write a function to check if it is a permutation of a pali-
   ndrome. A palindrome is a word or phrase that is the same forwards and bac-
   kwards. A permutation is a rearrangement to letters. The palindrome does n-
