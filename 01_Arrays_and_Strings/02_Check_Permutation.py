@@ -21,24 +21,33 @@ CHARS_SET = string.printable
 
 class Ex_01_02(Exercise):
   def setup(self):
-    size = 200
-    self.param.append(string_gen(size=size, chars=CHARS_SET))
-    self.param.append(string_gen(size=random.randint(1, size), chars=CHARS_SET))
+    #size = 200
+    #self.param.append(string_gen(size=size, chars=CHARS_SET))
+    #self.param.append(string_gen(size=random.randint(1, size), chars=CHARS_SET))
+    size = 5
+    self.param.append("aabcde")
+    self.param.append("acbde")
 
 class Ex0102(Solution):
   # O(N*M)
   def Naive(self, param):
-    large_str = param[0]
-    small_str = param[1]
+    large_str = list(param[0])
+    small_str = list(param[1])
+
+    if(len(large_str) != len(small_str)):
+      return "NOT Perm"
 
     for i in range(len(small_str)):
       found = False
       for j in range(len(large_str)):
         if(small_str[i] == large_str[j]):
           found = True
+          large_str[j] = ' '
           break
+      print large_str
       if(found == False):
         return "NOT Perm"
+
     return "Perm"
 
   # O(N+M)
@@ -46,14 +55,15 @@ class Ex0102(Solution):
     large_str = param[0]
     small_str = param[1]
 
-    bucket = [0] * 128
+    if(len(large_str) != len(small_str)):
+      return "NOT Perm"
 
+    bucket = [0] * 128
     for i in range(len(large_str)):
-      bucket[ord(large_str[i])] = 1
-    for i in range(len(small_str)):
-      if bucket[ord(small_str[i])] == 0:
-        return "NOT Perm"
-    return "Perm"
+      bucket[ord(large_str[i])] += 1
+      bucket[ord(small_str[i])] -= 1
+
+    return "Perm" if sum(abs(n) for n in bucket) == 0 else "NOT Perm"
 
 def solve():
   ex = Ex_01_02()

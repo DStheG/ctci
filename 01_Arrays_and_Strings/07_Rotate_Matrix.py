@@ -17,7 +17,7 @@ from collections import Counter
 
 class Ex_01_07(Exercise):
   def setup(self):
-    N = 5
+    N = 6
     INPUT = [[i] * N for i in range(N)]
     for i in range(N):
       for j in range(N):
@@ -25,7 +25,7 @@ class Ex_01_07(Exercise):
     self.param.append(INPUT)
 
 class Ex0107(Solution):
-  def moveTo(self, ret, N, x, y, l, depth):
+  def moveTo(self, ret, N, x, y, l):
     X = N - y - 1
     Y = x
     ret[Y][X] = l[y][x]
@@ -37,13 +37,31 @@ class Ex0107(Solution):
     ret = [[0] * N for i in range(N)]
     for i in range(N):
       for j in range(N):
-        self.moveTo(ret, N, j, i, mat, 4)
-
+        self.moveTo(ret, N, j, i, mat)
     return ret
+
+  def moveToRecursion(self, N, offset, x, y, l, depth):
+    if(depth == 0):
+      return
+    X = N - y - 1
+    Y = x
+    t = l[y][x]
+    self.moveToRecursion(N, offset, X, Y, l, depth-1)
+    l[Y][X] = t
+
+  def Inplace(self, param):
+    mat = param[0]
+    N = len(mat)
+
+    for i in range(N/2):
+      for j in range(N-1-i*2):
+        self.moveToRecursion(N, i, j + i, i, mat, 4)
+    return mat
 
 def solve():
   ex = Ex_01_07()
   ex.add_solution(Ex0107("Naive"))
+  ex.add_solution(Ex0107("Inplace"))
   ex.solve()
 
 if __name__ == "__main__":

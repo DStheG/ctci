@@ -80,6 +80,32 @@ class Ex0105(Solution):
 
     return False
 
+  def NotCopy(self, param):
+    len_0 = len(param[0])
+    len_1 = len(param[1])
+
+    if( abs(len_0 - len_1) > 2):
+      return False
+
+    l_str = param[0] if (len_0 > len_1) else param[1]
+    s_str = param[1] if (len_0 > len_1) else param[0]
+
+    l_idx = s_idx = 0
+    diff = 0
+    for i in range(len(l_str)):
+      if(len(s_str) == s_idx):
+        break
+      if(l_str[l_idx] == s_str[s_idx]):
+        l_idx += 1
+        s_idx += 1
+      else:
+        l_idx += 1
+        if(len_0 == len_1):
+          s_idx += 1
+        diff += 1
+
+    return False if diff > 1 else True
+
 def solve():
   ex = Ex_01_05_01()
   ex.add_solution(Ex0105("Naive"))
@@ -95,6 +121,22 @@ def solve():
 
   ex = Ex_01_05_04()
   ex.add_solution(Ex0105("Naive"))
+  ex.solve()
+
+  ex = Ex_01_05_01()
+  ex.add_solution(Ex0105("NotCopy"))
+  ex.solve()
+
+  ex = Ex_01_05_02()
+  ex.add_solution(Ex0105("NotCopy"))
+  ex.solve()
+
+  ex = Ex_01_05_03()
+  ex.add_solution(Ex0105("NotCopy"))
+  ex.solve()
+
+  ex = Ex_01_05_04()
+  ex.add_solution(Ex0105("NotCopy"))
   ex.solve()
 
 if __name__ == "__main__":

@@ -32,18 +32,7 @@ class Ex0109(Solution):
     if(len(s1) != len(s2)):
       return False
 
-    i = -1
-    for i in range(0, len(s2)):
-      if s1[i:] == s2[:-i]:
-        idx = i
-        break
-
-    if( i == -1 ):
-      return False
-
-    s3 = s2[len(s2)-i:] + s2[:len(s2)-i]
-
-    return self.isSubstring(s1, s3)
+    return self.isSubstring(s1 + s1, s2)
 
 def solve():
   ex = Ex_01_09()
