@@ -31,7 +31,7 @@ class Exercise(object):
 
     self.teardown()
 
-class Solution:
+class Solution(object):
   def __init__(self, name):
     self.name = name
 
